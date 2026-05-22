@@ -1,0 +1,13 @@
+services:
+  intervals-mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: intervals-mcp-server:latest
+    container_name: intervals-mcp-server
+    command: ["python", "src/intervals_mcp_server/server.py"]
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8765:8765"
+    restart: unless-stopped
